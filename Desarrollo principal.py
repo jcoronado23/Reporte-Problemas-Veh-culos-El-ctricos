@@ -17,14 +17,21 @@ def cargar_datos():
         quotechar='"'
     )
 
-    # limpiar nombres columnas
     df.columns = df.columns.str.strip()
 
-    # quitar espacios en columnas texto
-    columnas = ["id_documento","marca","modelo","año_modelo","problemas"]
+    columnas_texto = ["id_documento", "marca", "modelo", "problemas"]
 
-    for col in columnas:
+    for col in columnas_texto:
         df[col] = df[col].astype(str).str.strip()
+
+    # Convertir año_modelo a número
+    df["año_modelo"] = pd.to_numeric(df["año_modelo"], errors="coerce")
+
+    # Quitar filas sin año válido
+    df = df.dropna(subset=["año_modelo"])
+
+    # Convertir a entero
+    df["año_modelo"] = df["año_modelo"].astype(int)
 
     return df
 
@@ -133,7 +140,11 @@ def grafica_marcas(data):
 
 # Crear gráfica de lineas de años con mayor reportes del 2020 al 2026
 def grafica_reportes_anio(data):
-    datos = data.dropna(subset=["año_modelo"])
+    datos = data.copy()
+
+    datos["año_modelo"] = pd.to_numeric(datos["año_modelo"], errors="coerce")
+    datos = datos.dropna(subset=["año_modelo"])
+    datos["año_modelo"] = datos["año_modelo"].astype(int)
 
     datos = datos[
         (datos["año_modelo"] >= 2020) &
@@ -141,6 +152,11 @@ def grafica_reportes_anio(data):
     ]
 
     reportes = datos["año_modelo"].value_counts().sort_index()
+
+    if reportes.empty:
+        print("\n⚠ No hay reportes entre los años 2020 y 2026.")
+        return
+
     crecimiento = reportes.diff().fillna(0)
     porcentaje = reportes.pct_change().fillna(0) * 100
 
@@ -158,6 +174,7 @@ def grafica_reportes_anio(data):
     plt.title("Reportes, crecimiento y porcentaje 2020-2026")
     plt.xlabel("Año del modelo")
     plt.ylabel("Cantidad")
+    plt.xticks(reportes.index)
     plt.legend()
     plt.tight_layout()
     plt.show()
@@ -302,12 +319,12 @@ def mostrar_menu():
     while True:
         limpiar_pantalla()
 
-        print("=====================================================")
-        print("Sistema de Análisis de Problemas en Vehículos Eléctricos ⚡")
-        print("=====================================================")
+        print("====================================================================================================")
+        print("                     Sistema de Análisis de Problemas en Vehículos Eléctricos 🚗⚡")
+        print("====================================================================================================")
+        print('🔋')
         print(resumen)
-        print("-" * 80)
-
+        print('🪫')
         print("1. Buscar problema por ID")
         print("2. Gráfica de reportes por marca")
         print("3. Gráfica de reportes por año 2020-2026")
@@ -316,7 +333,7 @@ def mostrar_menu():
         print("6. Eliminar vehículo existente")
         print("7. Salir")
 
-        opcion = input("\nIngrese una opción: ").strip()
+        opcion = input("\n🔘Ingrese una opción: ").strip()
 
         if opcion == "1":
             buscar_por_id(data)
@@ -337,11 +354,11 @@ def mostrar_menu():
             data = eliminar_vehiculo(data)
 
         elif opcion == "7":
-            print("\nGracias por usar nuestro sistema de Autos Electricos. ¡Hasta luego!")
+            print("\nGracias por usar nuestro sistema de Autos Electricos. ¡Hasta luego!👋")
             break
 
         else:
-            print("\n⚠ Opción inválida. Ingrese un número del 1 al 7.")
+            print("\n⚠️ Opción inválida. Ingrese un número del 1 al 7.")
 
         pausar()
 
