@@ -144,6 +144,7 @@ def grafica_marcas(data):
 
     plt.title("Cantidad de reportes por marca")
     plt.xlabel("Marca")
+    plt.xlabel("[ MARCA VEHÍCULO ELÉCTRICO ]\n \nEl gráfico presenta la cantidad de reportes por marca de vehículos eléctricos, permitiendo identificar cuáles concentran más fallas y facilitando su análisis visual.")
     plt.ylabel("Cantidad de reportes")
     plt.xticks(rotation=45, ha="right")
     
