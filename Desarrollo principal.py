@@ -193,6 +193,7 @@ def grafica_reportes_anio(data):
 
     plt.title("Reportes, crecimiento y porcentaje 2020-2026")
     plt.xlabel("Año del modelo")
+    plt.xlabel("[ AÑO DEL MODELO ] \n \n El gráfico muestra la evolución de los reportes de fallas por año del modelo, permitiendo identificar tendencias a lo largo del tiempo.")
     plt.ylabel("Cantidad")
     plt.xticks(reportes.index)
     plt.legend()
