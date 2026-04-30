@@ -142,7 +142,6 @@ def grafica_marcas(data):
     ax = top_10.plot(kind="bar", color=colores)
 
     plt.title("Cantidad de reportes por marca")
-    plt.xlabel("Marca")
     plt.xlabel("[ MARCA VEHÍCULO ELÉCTRICO ]\n \nEl gráfico presenta la cantidad de reportes por marca de vehículos eléctricos, permitiendo identificar cuáles concentran más fallas y facilitando su análisis visual.")
     plt.ylabel("Cantidad de reportes")
     plt.xticks(rotation=45, ha="right")
@@ -191,7 +190,6 @@ def grafica_reportes_anio(data):
         plt.text(x, y + 200, f"{int(y)} / {p:.1f}%", ha="center")
 
     plt.title("Reportes, crecimiento y porcentaje 2020-2026")
-    plt.xlabel("Año del modelo")
     plt.xlabel("[ AÑO DEL MODELO ] \n \n El gráfico muestra la evolución de los reportes de fallas por año del modelo, permitiendo identificar tendencias a lo largo del tiempo.")
     plt.ylabel("Cantidad")
     plt.xticks(reportes.index)
