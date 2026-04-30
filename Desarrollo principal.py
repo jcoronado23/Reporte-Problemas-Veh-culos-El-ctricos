@@ -135,13 +135,16 @@ def grafica_marcas(data):
 
     plt.figure(figsize=(12, 6))
     top_10.plot(kind="bar")
+    ax = top_10.plot(kind="bar")
 
     plt.title("Cantidad de reportes por marca")
     plt.xlabel("Marca")
     plt.ylabel("Cantidad de reportes")
     plt.xticks(rotation=45, ha="right")
+    
     plt.tight_layout()
     plt.show()
+    
 
 # Crear gráfica de lineas de años con mayor reportes del 2020 al 2026
 def grafica_reportes_anio(data):
