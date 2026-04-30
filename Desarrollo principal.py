@@ -142,6 +142,7 @@ def grafica_marcas(data):
     plt.ylabel("Cantidad de reportes")
     plt.xticks(rotation=45, ha="right")
     
+    # Mostrar valores encima de cada barra
     plt.tight_layout()
     plt.show()
     
