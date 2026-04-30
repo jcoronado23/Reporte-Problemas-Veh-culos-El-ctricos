@@ -134,7 +134,6 @@ def grafica_marcas(data):
         top_10["Otras"] = otras
 
     plt.figure(figsize=(12, 6))
-    ax = top_10.plot(kind="bar")
     # Cambiar colores de barras, y barra más alta a destacar con color gold
     colores = ["green"] * len(top_10) 
     colores[0] = "red"
