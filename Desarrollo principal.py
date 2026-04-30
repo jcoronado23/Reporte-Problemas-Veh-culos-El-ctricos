@@ -1,3 +1,8 @@
+# Fundamentos de Python
+# Proyecto de Reportes de Vehículos Eléctricos
+# Profesor: Andrés Mena Abarca
+# Nombre: Jairon Martinez Coronado
+
 # NHTSA – Datos abiertos sobre fallas y problemas en vehículos eléctricos
 
 import os
@@ -16,7 +21,7 @@ def cargar_datos():
         encoding="utf-8-sig",
         quotechar='"'
     )
-
+    
     df.columns = df.columns.str.strip()
 
     columnas_texto = ["id_documento", "marca", "modelo", "problemas"]
@@ -318,7 +323,7 @@ def mostrar_menu():
 
     while True:
         limpiar_pantalla()
-
+        
         print("====================================================================================================")
         print("                     Sistema de Análisis de Problemas en Vehículos Eléctricos 🚗⚡")
         print("====================================================================================================")
