@@ -185,9 +185,11 @@ def grafica_reportes_anio(data):
 
     for x, y in zip(reportes.index, reportes.values):
         plt.text(x, y + 2, str(int(y)), ha="center")
+        plt.text(x, y + 200, str(int(y)), ha="center")
 
     for x, y, p in zip(crecimiento.index, crecimiento.values, porcentaje.values):
         plt.text(x, y - 4, f"{int(y)} / {p:.1f}%", ha="center")
+        plt.text(x, y + 200, f"{int(y)} / {p:.1f}%", ha="center")
 
     plt.title("Reportes, crecimiento y porcentaje 2020-2026")
     plt.xlabel("Año del modelo")
