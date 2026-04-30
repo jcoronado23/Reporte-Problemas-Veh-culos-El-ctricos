@@ -143,6 +143,9 @@ def grafica_marcas(data):
     plt.xticks(rotation=45, ha="right")
     
     # Mostrar valores encima de cada barra
+    for i, valor in enumerate(top_10):
+        ax.text(i, valor, str(int(valor)), ha='center', va='bottom')
+        
     plt.tight_layout()
     plt.show()
     
