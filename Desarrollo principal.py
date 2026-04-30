@@ -134,7 +134,6 @@ def grafica_marcas(data):
         top_10["Otras"] = otras
 
     plt.figure(figsize=(12, 6))
-    top_10.plot(kind="bar")
     ax = top_10.plot(kind="bar")
 
     plt.title("Cantidad de reportes por marca")
